@@ -1,7 +1,10 @@
-import React, {useEffect, useState, useRef} from "react";
+import {useEffect, useState, useRef} from "react";
 
 
-const Stepper = ({steps, currentStep}) => {
+
+
+
+const Stepper = ({steps, currentStep, setCurrentStep}) => {
     const [newStep, setNewStep] = useState([]);
     const stepRef = useRef();
 
@@ -59,24 +62,29 @@ const Stepper = ({steps, currentStep}) => {
         setNewStep(current);
     }, [steps, currentStep ]);
 
+
+    function changeStep(index) {
+        if (currentStep > index)
+            setCurrentStep(index);
+    }
+    
     const displaySteps = newStep.map((step, index) => {
         return (
         <div key = {index} 
-        className= {
-            index !== 0 ? "w-full flex items-center" : "flex items-center"}>
-            <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.selected ? "border-green-600" : "border-gray-300"}`}>
+        className = {`${index !== 0 ? "w-full flex items-center" : "flex items-center"} ${index === newStep.length - 1 ? "hidden" : ""}`}>
+            <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.selected ? "border-green-500" : "border-gray-300"}`}>
                 {/* Display line */}
             </div>
-            <div className="relative flex flex-col items-center text-teal-600">
-                <div className={`rounded-full transition duration-500 ease-in-out border-2  h-12 w-12 flex items-center justify-center py-3 
-                ${step.completed ? "bg-green-600" : ""}
-                ${step.selected ? "font-bold border-green-600" : "border-gray-300"}`}>
+            <div className="relative flex flex-col items-center text-green-500">
+                <button onClick={() => changeStep(index + 1)} className={`rounded-full transition duration-500 ease-in-out border-2  h-12 w-12 flex items-center justify-center py-3 
+                ${step.completed ? "bg-green-500 hover:bg-green-600 hover:border-green-600 active:bg-green-700" : "bg-white cursor-default"}
+                ${step.selected ? "font-bold border-green-500" : "border-gray-300"}`}>
                     {/* Display numbers */}
                     {step.completed ? (
                         <span className="text-xl text-white">&#10003;</span>
                     ) : (index + 1)}
-                </div>
-                <div className={`absolute top-0 text-center mt-16 w-32 text-xs font-medium uppercase ${step.highlighted ? "text-gray-900" : "text-gray-400"}`}>
+                </button>
+                <div className={`absolute top-0 text-center mt-16 sm:w-32 w-16 text-xs font-medium uppercase ${step.highlighted ? "text-gray-900" : "text-gray-400"}`}>
                     {/* Display description */}
                     {step.decription}
                 </div>

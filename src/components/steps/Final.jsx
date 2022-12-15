@@ -1,6 +1,7 @@
+
+
 export default function Final() {
   return (
-    <div className="container md:mt-10">
       <div className="flex flex-col items-center">
         <div className="wrapper">
           <svg
@@ -22,13 +23,12 @@ export default function Final() {
             />
           </svg>
         </div>
-        <div className="mt-3 text-xl font-semibold uppercase text-green-500">
+        <div className="mt-3 text-xl font-semibold uppercase text-green-500 text-center">
           Запись на прием зарегистрирована
         </div>
         <div className="text-lg font-semibold text-gray-500 text-center">
           Она будет подтверждена после SMS или телефонного звонка из нашего call-центра.
         </div>
       </div>
-    </div>
   );
 }
