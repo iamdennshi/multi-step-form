@@ -24,6 +24,9 @@ export default function ServiceAndDoctor() {
 
   return (
     <>
+      <h2 className='text-gray-900 font-thin text-2xl text-center uppercase mb-10'>
+        Веберете услугу и врача
+      </h2>
       <div className='mb-10'>
         <label htmlFor="service" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
           Выберите услугу

@@ -8,15 +8,23 @@ export default function DateAndTime() {
   }
 
   return (
-    <div className='flex flex-row justify-between items-start'>
-      <input type="date" min={getNowDate()}/>
-      <div className='bg-red-300 w-1/2 text-center'>
-        <ul className='text-gray-400'>
-          <li className='hover:text-green-400 hover:font-bold cursor-pointer'>11:30</li>
-          <li>12:00</li>
-          <li>13:00</li>
-        </ul>
+    <div>
+      <h2 className='text-gray-900 font-thin text-2xl text-center uppercase mb-10'>
+        Выберете дату и время приема
+      </h2>
+      <div className='mb-10'>
+        <label htmlFor="date" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
+            Выберете дату
+        </label>
+        <input name="date" className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg
+        focus:border-green-600 outline-none block w-full p-2.5' type="date" defaultValue={getNowDate()} min={getNowDate()}/>
       </div>
+
+      <label htmlFor="time" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
+          Выберите время
+      </label>
+      <input name="date" className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg
+       focus:border-green-600 outline-none block w-full p-2.5' defaultValue="12:00" type="time"/>
     </div>
   )
 }

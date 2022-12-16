@@ -4,7 +4,7 @@ import {StepperControl} from "./components/StepperControl";
 
 import ServiceAndDoctor from "./components/steps/ServiceAndDoctor";
 import DateAndTime from "./components/steps/DateAndTime";
-import Payment from "./components/steps/Payment";
+import AboutSelf from "./components/steps/AboutSelf";
 import Check from "./components/steps/Check";
 import Final from "./components/steps/Final";
 import { StepperContext } from "./contexts/StepperContext";
@@ -33,7 +33,7 @@ function App() {
       case 2:
         return <DateAndTime />
       case 3:
-        return <Payment/>
+        return <AboutSelf/>
       case 4:
         return <Check />  
       default: 

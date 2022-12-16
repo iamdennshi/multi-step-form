@@ -5,7 +5,7 @@ function Next({handleClick, currentStep, steps}) {
     <button
       onClick={()=>handleClick("next")}
       className='bg-green-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'>
-      {currentStep === steps.length - 1 ? "Отправить" : "Далее"}
+      {currentStep === steps.length - 1 ? "Подтвердить" : "Следующий"}
     </button> 
 
     );
@@ -19,7 +19,7 @@ function Back({handleClick}) {
     className='bg-white text-slate-400 uppercase py-2 
     px-8 rounded-xl font-semibold cursor-pointer border-2 border-slate-300
      hover:bg-slate-700 hover:text-whie transition duration-200 ease-in-out'>
-        Назад
+        Предыдущий
     </button>
   );
 }
