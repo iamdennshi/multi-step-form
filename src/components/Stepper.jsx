@@ -1,9 +1,5 @@
 import {useEffect, useState, useRef} from "react";
 
-
-
-
-
 const Stepper = ({steps, currentStep, setCurrentStep}) => {
     const [newStep, setNewStep] = useState([]);
     const stepRef = useRef();
@@ -20,7 +16,6 @@ const Stepper = ({steps, currentStep, setCurrentStep}) => {
                     selected: true,
                     completed: false,
                 };
-                count++;
             }
             else if (count < stepNumber) {
                 newSteps[count] = {
@@ -29,7 +24,6 @@ const Stepper = ({steps, currentStep, setCurrentStep}) => {
                     selected: true,
                     completed: true,
                 };
-                count++;
             }
             else {
                 newSteps[count] = {
@@ -38,14 +32,13 @@ const Stepper = ({steps, currentStep, setCurrentStep}) => {
                     selected: false,
                     completed: false,
                 };
-                count++;
             }
+            count++;
         }
         return newSteps;
     };
 
     useEffect(() => {
-        //create object
         const stepsState = steps.map((step, index) => 
             Object.assign(
                 {},
@@ -60,18 +53,15 @@ const Stepper = ({steps, currentStep, setCurrentStep}) => {
         stepRef.current = stepsState;
         const current = updateStep(currentStep - 1, stepRef.current);
         setNewStep(current);
-    }, [steps, currentStep ]);
+    }, [steps, currentStep]);
 
-
-    function changeStep(index) {
-        if (currentStep > index)
-            setCurrentStep(index);
+    const changeStep = (index) => {
+        currentStep > index && setCurrentStep(index);
     }
     
     const displaySteps = newStep.map((step, index) => {
         return (
-        <div key = {index} 
-        className = {`${index !== 0 ? "w-full flex items-center" : "flex items-center"} ${index === newStep.length - 1 ? "hidden" : ""}`}>
+        <div key = {index} className = {`${index !== 0 ? "w-full flex items-center" : "flex items-center"} ${index === newStep.length - 1 ? "hidden" : ""}`}>
             <div className={`flex-auto border-t-2 transition duration-500 ease-in-out ${step.selected ? "border-green-500" : "border-gray-300"}`}>
                 {/* Display line */}
             </div>
@@ -84,7 +74,7 @@ const Stepper = ({steps, currentStep, setCurrentStep}) => {
                         <span className="text-xl text-white">&#10003;</span>
                     ) : (index + 1)}
                 </button>
-                <div className={`absolute top-0 text-center mt-16 sm:w-32 w-16 text-xs font-medium uppercase ${step.highlighted ? "text-gray-900" : "text-gray-400"}`}>
+                <div className={`absolute top-0 text-center mt-16 sm:w-32 w-16 text-xs font-thin uppercase ${step.highlighted ? "text-gray-900" : "text-gray-400"}`}>
                     {/* Display description */}
                     {step.decription}
                 </div>
