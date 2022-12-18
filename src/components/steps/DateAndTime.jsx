@@ -1,6 +1,8 @@
 import React from 'react'
+import { StepperContext } from '../../contexts/StepperContext'
 
 export default function DateAndTime() {
+  const {handleChange, userData} = React.useContext(StepperContext);
 
   function getNowDate() {
     let d = new Date();
@@ -16,14 +18,14 @@ export default function DateAndTime() {
         <label htmlFor="date" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
             Выберете дату
         </label>
-        <input name="date" className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg
+        <input onChange={handleChange} name="date" className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg
         focus:border-green-600 outline-none block w-full p-2.5' type="date" defaultValue={getNowDate()} min={getNowDate()}/>
       </div>
 
       <label htmlFor="time" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
           Выберите время
       </label>
-      <input name="date" className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg
+      <input onChange={handleChange} name="time" className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg
        focus:border-green-600 outline-none block w-full p-2.5' defaultValue="12:00" type="time"/>
     </div>
   )

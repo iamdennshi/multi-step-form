@@ -14,7 +14,10 @@ function App() {
   const [userData, setUserData] = useState({});
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
+    let {name, value} = e.target;
+    // if (name == "date")
+    //   value = "20.10.1999";
+
     setUserData({...userData, [name]: value});
   };
 
