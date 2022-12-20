@@ -4,4 +4,5 @@
 ```bash
 git clone https://github.com/iamdennshi/multi-step-form.git
 npm install
+npm start
 ```

@@ -1,5 +1,4 @@
 import React from 'react'
-import { unstable_renderSubtreeIntoContainer } from 'react-dom';
 import { StepperContext } from '../../contexts/StepperContext'
 
 

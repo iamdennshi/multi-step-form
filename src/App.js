@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Stepper from "./components/Stepper";
-import {StepperControl} from "./components/StepperControl";
 
 import ServiceAndDoctor from "./components/steps/ServiceAndDoctor";
 import DateAndTime from "./components/steps/DateAndTime";
@@ -18,12 +17,10 @@ function App() {
     return `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${("0" + d.getDate()).slice(-2)}`;
   }
 
-  const handleChange = (e) => {
-    let {name, value} = e.target;
-    // if (name == "date")
-    //   value = "20.10.1999";
-
-    setUserData({...userData, [name]: value});
+  const handleChange = (data) => {
+    setUserData({...userData, ...data});
+    console.log(data);
+    handleClick("next");
   };
 
   const steps = [
@@ -54,17 +51,6 @@ function App() {
     if (direction === "reload") 
       newStep = 1;
     else if (direction === "next") {
-      if (newStep == 1) {
-        if (!userData.service) {
-          return alert("Выберите услугу");
-        } else if(!userData.doctor) {
-          return alert("Выберите врача");
-        }
-      }
-      else if (newStep == 2) {
-        userData.date = userData.date ?? getNowDate();
-        userData.time = userData.time ?? "12:00";
-      }
 
       newStep++;
     }  
@@ -99,23 +85,11 @@ function App() {
         {steps.length !== currentStep ? (<div className="mt-5"> <Stepper steps = {steps} currentStep = {currentStep} setCurrentStep = {setCurrentStep} /></div>) : ""}
       
         {/* Display Components */}
-        <div className="my-10 p-10">
-          <StepperContext.Provider value={{
-            handleChange,
-            userData
-          }} >
-
+        <div className="mt-10 p-10">
+          <StepperContext.Provider value={{handleChange, userData}} >
             {displayStep(currentStep)} 
-            
           </StepperContext.Provider>
         </div>
-
-        {/* Navigation controls */}
-        <StepperControl
-          handleClick={handleClick}
-          currentStep={currentStep}
-          steps={steps}
-        />
       </div>
     </div>
   );
