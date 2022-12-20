@@ -19,9 +19,9 @@ export default function Check() {
                     <p>{userData.date} {userData.time}</p>
                 </div>
                 <div className='w-1/2 pl-2'>
-                    <p className='uppercase font-bold text-gray-900'>{userData.firstName}</p>
-                    <p>Телефон: {userData.telNumber}</p>
-                    <p>E-mail: {userData.email}</p>
+                    <p className='uppercase font-bold text-gray-900'>{userData.name}</p>
+                    <p>Телефон: {userData.phone}</p>
+                    <p className={!userData.email ? 'hidden' : ''}>E-mail: {userData.email}</p>
                     <p>Домашний адрес: {userData.address}</p>
                     <p>Дата рождения: {userData.dateOfBirth}</p>
                 </div>

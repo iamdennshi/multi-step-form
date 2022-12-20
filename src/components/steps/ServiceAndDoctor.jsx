@@ -11,14 +11,14 @@ export default function ServiceAndDoctor() {
   const [doctor, setDoctor] = useState(doctors);
 
   const displayServices = service.map((s, index) => {
-    return (
-      <option key={index} value={index}>{s}</option>
+    return ( index !== 0 ?
+      <option key={index} value={index}>{s}</option> : <option disabled selected key={index} value={index}>--- Нажмите чтобы выбрать услугу ---</option>
     )
   })
 
   const displayDoctors = doctor.map((s, index) => {
-    return (
-      <option key={index} className="uppercase" value={index}>{s}</option>
+    return ( index !== 0 ?
+      <option key={index} value={index}>{s}</option> : <option disabled selected key={index} value={index}>--- Нажмите чтобы выбрать врача ---</option>
     )
   })
 
@@ -31,7 +31,7 @@ export default function ServiceAndDoctor() {
         <label htmlFor="service" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
           Выберите услугу
         </label>
-        <select name="service" onChange={handleChange} id="service" className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg focus:border-green-600 outline-none block w-full p-2.5'>
+        <select name="service" value={userData.service} onChange={handleChange} id="service" className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg focus:border-green-600 outline-none block w-full p-2.5'>
           {displayServices}
         </select>
 
@@ -41,7 +41,7 @@ export default function ServiceAndDoctor() {
         <label htmlFor="doctor" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
           Выберите врача
         </label>
-        <select id="doctor" name="doctor" onChange={handleChange} className='bg-white border-2 border-gray-300 text-gray-900 text-xs uppercase rounded-lg focus:border-green-600 outline-none block w-full p-2.5'>
+        <select id="doctor" value={userData.doctor} name="doctor" onChange={handleChange} className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg focus:border-green-600 outline-none block w-full p-2.5'>
           {displayDoctors}
         </select>
       </div>

@@ -13,6 +13,11 @@ function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState({});
 
+  function getNowDate() {
+    let d = new Date();
+    return `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${("0" + d.getDate()).slice(-2)}`;
+  }
+
   const handleChange = (e) => {
     let {name, value} = e.target;
     // if (name == "date")
@@ -48,11 +53,39 @@ function App() {
     let newStep = currentStep;
     if (direction === "reload") 
       newStep = 1;
-    else direction === "next" ? newStep++ : newStep--;
+    else if (direction === "next") {
+      if (newStep == 1) {
+        if (!userData.service) {
+          return alert("Выберите услугу");
+        } else if(!userData.doctor) {
+          return alert("Выберите врача");
+        }
+      }
+      else if (newStep == 2) {
+        userData.date = userData.date ?? getNowDate();
+        userData.time = userData.time ?? "12:00";
+      }
+
+      newStep++;
+    }  
+    else {
+      newStep--;
+    } 
+
 
     if (newStep === steps.length) {
-        console.log(userData);
+      
+      console.log(userData);
+        // console.log(JSON.stringify(userData));
+        // fetch("http://localhost:4444", {
+        //   method: "POST",
+        //   headers: {
+        //     'Content-Type': 'application/json;charset=utf-8'
+        //   },
+        //   body: JSON.stringify(userData),
+        // });
     }
+
     newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
   }
 
