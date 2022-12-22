@@ -42,7 +42,7 @@ export default function ServiceAndDoctor() {
         <label htmlFor="service" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
           Выберите услугу
         </label>
-        <select {...register("service", {min: 0})} name="service" className={`bg-white border-2 ${errors.service ? "border-red-500" : "border-gray-300"} text-gray-900 text-xs rounded-lg ${errors.service ? "focus:border-red-600" : "focus:border-green-600"} outline-none block w-full p-2.5`}>
+        <select {...register("service", {min: 0})} id="service" className={`bg-white border-2 ${errors.service ? "border-red-500" : "border-gray-300"} text-gray-900 text-xs rounded-lg ${errors.service ? "focus:border-red-600" : "focus:border-green-600"} outline-none block w-full p-2.5`}>
           <option disabled value="-1">Нажмите чтобы выбрать услугу</option>
           {displayServices}
         </select>
@@ -53,7 +53,7 @@ export default function ServiceAndDoctor() {
         <label htmlFor="doctor" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
           Выберите врача
         </label>
-        <select {...register("doctor", {min: 0})} name="doctor" className={`bg-white border-2 ${errors.doctor ? "border-red-500" : "border-gray-300"} text-gray-900 text-xs rounded-lg ${errors.doctor ? "focus:border-red-600" : "focus:border-green-600"} outline-none block w-full p-2.5`}>
+        <select {...register("doctor", {min: 0})} id="doctor" className={`bg-white border-2 ${errors.doctor ? "border-red-500" : "border-gray-300"} text-gray-900 text-xs rounded-lg ${errors.doctor ? "focus:border-red-600" : "focus:border-green-600"} outline-none block w-full p-2.5`}>
           <option disabled value="-1">Нажмите чтобы выбрать врача</option>
           {displayDoctors}
         </select>

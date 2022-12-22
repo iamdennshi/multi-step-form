@@ -78,15 +78,15 @@ function App() {
 
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
-      <div className="w-full md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white">
+    <div className="flex flex-col justify-center items-center min-h-full p-0 sm:px-6 sm:py-12">
+      <div className="w-full lg:w-1/2 min-h-screen sm:min-h-fit shadow-xl rounded-2xl bg-white t">
 
         {/* Stepper Info */}      
         {steps.length !== currentStep ? (<div className="mt-5"> <Stepper steps = {steps} currentStep = {currentStep} setCurrentStep = {setCurrentStep} /></div>) : ""}
       
         {/* Display Components */}
         <div className="mt-10 p-10">
-          <StepperContext.Provider value={{handleChange, userData}} >
+          <StepperContext.Provider value={{handleChange, userData, setUserData}} >
             {displayStep(currentStep)} 
           </StepperContext.Provider>
         </div>
