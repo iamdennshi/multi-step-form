@@ -1,27 +1,59 @@
-import { useState } from "react";
-import Stepper from "./components/Stepper";
+/* 
 
+TAB INDEX
+REFACTORING
+BACK BUTTON
+
+*/
+import { useState } from "react";
+import { StepperContext } from "./contexts/StepperContext";
+
+import Stepper from "./components/Stepper";
 import ServiceAndDoctor from "./components/steps/ServiceAndDoctor";
 import DateAndTime from "./components/steps/DateAndTime";
 import AboutSelf from "./components/steps/AboutSelf";
 import Check from "./components/steps/Check";
 import Final from "./components/steps/Final";
-import { StepperContext } from "./contexts/StepperContext";
 
 function App() {
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState({});
 
-  function getNowDate() {
-    let d = new Date();
-    return `${d.getFullYear()}-${("0" + (d.getMonth() + 1)).slice(-2)}-${("0" + d.getDate()).slice(-2)}`;
-  }
+  const handleChange = (data, direction) => {
+    if (data !== null) {
+      if (currentStep === 3) 
+        data.phone = data.phone[0] === "+" ? data.phone : "+7 " + data.phone.toString();
 
-  const handleChange = (data) => {
-    setUserData({...userData, ...data});
-    console.log(data);
-    handleClick("next");
+      setUserData(() => ({...userData, ...data}));
+    }
+    handleClick(direction);
   };
+  
+  const handleClick = (direction) => {
+    let newStep = currentStep;
+    if (direction === "reload")
+    {
+      setUserData(() => ({}));
+      newStep = 1;
+    }
+    else if (direction === "next") 
+      newStep++;
+    else
+      newStep--;
+  
+    if (newStep === steps.length) {
+      console.log(userData);
+        // console.log(JSON.stringify(userData));
+        // fetch("http://localhost:4444", {
+        //   method: "POST",
+        //   headers: {
+        //     'Content-Type': 'application/json;charset=utf-8'
+        //   },
+        //   body: JSON.stringify(userData),
+        // });
+    }
+    newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
+  }
 
   const steps = [
     "Услуга и Врач",
@@ -46,47 +78,14 @@ function App() {
     }
   };
 
-  const handleClick = (direction) => {
-    let newStep = currentStep;
-    if (direction === "reload") 
-      newStep = 1;
-    else if (direction === "next") {
-
-      newStep++;
-    }  
-    else {
-      newStep--;
-    } 
-
-
-    if (newStep === steps.length) {
-      
-      console.log(userData);
-        // console.log(JSON.stringify(userData));
-        // fetch("http://localhost:4444", {
-        //   method: "POST",
-        //   headers: {
-        //     'Content-Type': 'application/json;charset=utf-8'
-        //   },
-        //   body: JSON.stringify(userData),
-        // });
-    }
-
-    newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
-  }
-
-
-
   return (
     <div className="flex flex-col justify-center items-center min-h-full p-0 sm:px-6 sm:py-12">
-      <div className="w-full lg:w-1/2 min-h-screen sm:min-h-fit shadow-xl rounded-2xl bg-white t">
-
+      <div className="w-full lg:w-1/2 min-h-screen sm:min-h-fit shadow-xl rounded-2xl bg-white">
         {/* Stepper Info */}      
         {steps.length !== currentStep ? (<div className="mt-5"> <Stepper steps = {steps} currentStep = {currentStep} setCurrentStep = {setCurrentStep} /></div>) : ""}
-      
-        {/* Display Components */}
+        {/* Display Components and Buttons */}
         <div className="mt-10 p-10">
-          <StepperContext.Provider value={{handleChange, userData, setUserData}} >
+          <StepperContext.Provider value={{handleChange, userData, handleClick}} >
             {displayStep(currentStep)} 
           </StepperContext.Provider>
         </div>

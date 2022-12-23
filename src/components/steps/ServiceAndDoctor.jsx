@@ -1,40 +1,32 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import { useForm } from "react-hook-form"; 
 import { StepperContext } from '../../contexts/StepperContext'
 import { services } from '../../data/services';
 import { doctors } from '../../data/doctors';
 
-
 export default function ServiceAndDoctor() {
-  const {handleChange, userData} = useContext(StepperContext);
-  const [service, setService] = useState(services);
-  const [doctor, setDoctor] = useState(doctors);
+  const {handleChange, userData} = React.useContext(StepperContext);
   const { register, handleSubmit, formState: { errors }} = useForm({
     mode: 'onSubmit',
     defaultValues: {
       service: userData.service || -1,
       doctor: userData.doctor || -1,
     }
-
   });
 
-
-  const displayServices = service.map((s, index) => {
+  const displayServices = services.map((s, index) => {
     return ( 
       <option key={index + 100} value={index}>{s}</option>
     )
   })
-
-  const displayDoctors = doctor.map((s, index) => {
+  const displayDoctors = doctors.map((s, index) => {
     return ( 
       <option key={index + 200} value={index}>{s}</option> 
     )
   })
 
-
-
   return (
-    <form onSubmit={handleSubmit(handleChange)}>
+    <form onSubmit={handleSubmit(data => handleChange(data, "next"))}>
       <h2 className='text-gray-900 font-thin text-2xl text-center uppercase mb-10'>
         Веберете услугу и врача
       </h2>
@@ -60,8 +52,7 @@ export default function ServiceAndDoctor() {
         {errors.doctor && <p className='text-red-500 text-sm font-bold'>⚠ Веберете врача</p>}
       </div>
       <div className='flex justify-around mt-10'>
-      <input type="submit" value='Далее'
-        className='bg-green-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>
+        <input type="submit" value='Далее' className='bg-green-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>
       </div>
   </form>
   )

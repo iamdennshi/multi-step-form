@@ -1,6 +1,6 @@
 import {useEffect, useState, useRef} from "react";
 
-const Stepper = ({steps, currentStep, setCurrentStep}) => {
+export default function Stepper({steps, currentStep, setCurrentStep}) {
     const [newStep, setNewStep] = useState([]);
     const stepRef = useRef();
 
@@ -66,7 +66,7 @@ const Stepper = ({steps, currentStep, setCurrentStep}) => {
                 {/* Display line */}
             </div>
             <div className="relative flex flex-col items-center text-green-500">
-                <button onClick={() => changeStep(index + 1)} className={`rounded-full transition duration-500 ease-in-out border-2  h-12 w-12 flex items-center justify-center py-3 
+                <button tabIndex={`${step.completed ? "1" : "-1"}`} onClick={() => changeStep(index + 1)} className={`rounded-full transition duration-500 ease-in-out border-2  h-12 w-12 flex items-center justify-center py-3 
                 ${step.completed ? "bg-green-500 hover:bg-green-600 hover:border-green-600 active:bg-green-700" : "bg-white cursor-default"}
                 ${step.selected ? "font-bold border-green-500" : "border-gray-300"}`}>
                     {/* Display numbers */}
@@ -80,7 +80,7 @@ const Stepper = ({steps, currentStep, setCurrentStep}) => {
                 </div>
             </div>
         </div>
-         );
+        );
     });
     
     return (
@@ -89,5 +89,3 @@ const Stepper = ({steps, currentStep, setCurrentStep}) => {
         </div>
     );
 };
-
-export default Stepper;
