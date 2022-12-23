@@ -94,9 +94,9 @@ export default function AboutSelf() {
                             className={`bg-white border-2 ${errors.phone ? "border-red-500" : "border-gray-300"} text-gray-900 text-xs rounded-r-lg ${errors.phone ? "focus:border-gray-600" : "focus:border-green-600"} outline-none block w-full p-2.5`} 
                             {...register("phone", {
                                 required: true,
+                                onChange: e => {e.target.value=formatPhoneNumber(e.target.value)}, 
                                 minLength: 15,
                             })} 
-                            onChange={e => {e.target.value=formatPhoneNumber(e.target.value)}} 
                             placeholder="(___) ___-__-__" 
                             type="tel"
                             id="phone"/>
@@ -125,11 +125,11 @@ export default function AboutSelf() {
                 })} placeholder='Дополнительные сведения, которые вы бы хотели передать специалисту ...' id="note" rows={3} className='bg-white border-2 border-gray-300 text-gray-900 text-xs rounded-lg focus:border-green-600 outline-none block w-full p-2.5'/>
             </div>
 
-            <div className='flex justify-around mt-10'>
+            <div className='flex justify-between sm:justify-around mt-10'>
                 <input onClick={() => handleChange(null, "back")} type="button" value='Назад'
-                    className='bg-gray-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-gray-600 active:bg-gray-700 transition duration-200 ease-in-out'/>
+                    className='bg-gray-500 cursor-pointer text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-gray-600 active:bg-gray-700 transition duration-200 ease-in-out'/>
                 <input type="submit" value='Далее'
-                    className='bg-green-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>
+                    className='bg-green-500 cursor-pointer text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>
             </div>
         </form>
     )

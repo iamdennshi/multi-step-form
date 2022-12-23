@@ -74,7 +74,7 @@ export default function Stepper({steps, currentStep, setCurrentStep}) {
                         <span className="text-xl text-white">&#10003;</span>
                     ) : (index + 1)}
                 </button>
-                <div className={`absolute top-0 text-center mt-16 sm:w-32 w-16 text-xs font-thin uppercase ${step.highlighted ? "text-gray-900" : "text-gray-400"}`}>
+                <div className={`absolute top-0 text-center mt-16 sm:w-32 w-16 text-xs uppercase  ${step.highlighted ? "text-gray-900" : "text-gray-400 font-thin"}`}>
                     {/* Display description */}
                     {step.decription}
                 </div>

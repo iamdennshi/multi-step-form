@@ -53,11 +53,11 @@ export default function DateAndTime() {
         ⚠ Неверно выбрано время. Выберете от 10:00 до 17:00
       </p>}
       
-      <div className='flex justify-around mt-10'>
+      <div className='flex justify-between sm:justify-around mt-10'>
         <input onClick={() => handleChange(null, "back")} type="button" value='Назад'
-          className='bg-gray-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-gray-600 active:bg-gray-700 transition duration-200 ease-in-out'/>
+          className='bg-gray-500 text-white uppercase cursor-pointer py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-gray-600 active:bg-gray-700 transition duration-200 ease-in-out'/>
         <input type="submit" value='Далее'
-          className='bg-green-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>
+          className='bg-green-500 text-white uppercase cursor-pointer py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>
       </div>
     </form>
   )

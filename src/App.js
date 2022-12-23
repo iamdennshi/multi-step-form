@@ -1,10 +1,3 @@
-/* 
-
-TAB INDEX
-REFACTORING
-BACK BUTTON
-
-*/
 import { useState } from "react";
 import { StepperContext } from "./contexts/StepperContext";
 

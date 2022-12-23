@@ -52,7 +52,7 @@ export default function ServiceAndDoctor() {
         {errors.doctor && <p className='text-red-500 text-sm font-bold'>⚠ Веберете врача</p>}
       </div>
       <div className='flex justify-around mt-10'>
-        <input type="submit" value='Далее' className='bg-green-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointe hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>
+        <input type="submit" value='Далее' className='bg-green-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointer hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>
       </div>
   </form>
   )
