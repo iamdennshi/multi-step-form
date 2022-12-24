@@ -1,10 +1,9 @@
 import React from 'react'
 import { StepperContext } from '../../contexts/StepperContext'
-import { services } from '../../data/services';
 import { doctors } from '../../data/doctors';
 
 export default function Check() {
-    const {userData, handleClick} = React.useContext(StepperContext);
+    const {userData, handleClick, services} = React.useContext(StepperContext);
     const getReadableDate = (date) => `${date.slice(8,10)}.${date.slice(5,7)}.${date.slice(0,4)}`;
 
     return (
@@ -14,9 +13,10 @@ export default function Check() {
             </h2>
             <div className='flex flex-row items-start'>
                 <div className='w-1/2 pr-2'>
-                    <p className="uppercase font-bold text-gray-900">{services[userData.service]}</p>
+                    <p className="uppercase font-bold text-gray-900">{services[userData.service].name}</p>
                     <p>{doctors[userData.doctor]}</p>
                     <p>{getReadableDate(userData.date)} {userData.time}</p>
+                    <p className='inline-block font-bold text-green-500 text-2xl'>{services[userData.service].price}<span className='text-xl'>.00</span> ₽</p>
                 </div>
                 <div className='w-1/2 pl-2'>
                     <p className='uppercase font-bold text-gray-900'>{userData.name}</p>
@@ -28,7 +28,7 @@ export default function Check() {
             </div>
             <div className='flex items-center mt-10'>
                 <input className='h-4 w-4 rounded text-green-300 mr-2' id="privicy" type='checkbox'/>
-                <label for="privicy" className='text-gray-500 font-normal text-sm'>Даю сагласие на обработку <span className='text-gray-900 underline'>своих персональных данных</span></label>
+                <label for="privicy" className='text-gray-500 font-normal text-sm'>Вы согласны на обработку <span className='text-gray-900 underline'>своих персональных данных</span></label>
             </div>
             <div className='flex justify-between sm:justify-around mt-10'>
                 <input onClick={() => handleClick("back")} type="button" value='Назад'

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StepperContext } from "./contexts/StepperContext";
 
 import Stepper from "./components/Stepper";
@@ -9,8 +9,10 @@ import Check from "./components/steps/Check";
 import Final from "./components/steps/Final";
 
 function App() {
+  const SERVER_IP = "192.168.1.143";
   const [currentStep, setCurrentStep] = useState(1);
   const [userData, setUserData] = useState({});
+  const [services, setServices] = useState([]);
 
   const handleChange = (data, direction) => {
     if (data !== null) {
@@ -37,7 +39,7 @@ function App() {
     if (newStep === steps.length) {
       console.log(userData);
         // console.log(JSON.stringify(userData));
-        // fetch("http://localhost:4444", {
+        // fetch(`http://${SERVER_IP}:4444`, {
         //   method: "POST",
         //   headers: {
         //     'Content-Type': 'application/json;charset=utf-8'
@@ -71,6 +73,14 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    // fetch(`http://${SERVER_IP}:4444/services`)
+    //   .then((response) => response.json())
+    //   .then((data) => setServices(() => data));
+  }, [])
+
+
+
   return (
     <div className="flex flex-col justify-center items-center min-h-full p-0 sm:px-6 sm:py-12">
       <div className="w-full lg:w-1/2 min-h-screen sm:min-h-fit shadow-xl rounded-2xl bg-white">
@@ -78,7 +88,7 @@ function App() {
         {steps.length !== currentStep ? (<div className="mt-5"> <Stepper steps = {steps} currentStep = {currentStep} setCurrentStep = {setCurrentStep} /></div>) : ""}
         {/* Display Components and Buttons */}
         <div className="mt-10 p-10">
-          <StepperContext.Provider value={{handleChange, userData, handleClick}} >
+          <StepperContext.Provider value={{handleChange, userData, handleClick, services}} >
             {displayStep(currentStep)} 
           </StepperContext.Provider>
         </div>
