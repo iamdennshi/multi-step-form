@@ -1,11 +1,11 @@
 import React from 'react';
 import { useForm } from "react-hook-form"; 
 import { StepperContext } from '../../contexts/StepperContext'
-// import { services } from '../../data/services';
+import { services } from '../../data/services';
 import { doctors } from '../../data/doctors';
 
 export default function ServiceAndDoctor() {
-  const {handleChange, userData, services} = React.useContext(StepperContext);
+  const {handleChange, userData} = React.useContext(StepperContext);
   const { register, handleSubmit, formState: { errors }} = useForm({
     mode: 'onSubmit',
     defaultValues: {
@@ -29,7 +29,7 @@ export default function ServiceAndDoctor() {
   return (
     <form onSubmit={handleSubmit(data => handleChange(data, "next"))}>
       <h2 className='text-gray-900 font-thin text-2xl text-center uppercase mb-10'>
-        Веберете услугу и врача
+        Выберите услугу и врача
       </h2>
       
       <div className='mb-10'>
@@ -38,11 +38,9 @@ export default function ServiceAndDoctor() {
         </label>
         <select {...register("service", {min: 0})} id="service" className={`bg-white border-2 ${errors.service ? "border-red-500 focus:border-red-600" : "border-gray-300 focus:border-green-600"} text-gray-900 text-xs rounded-lg outline-none block w-full p-2.5`}>
           <option disabled value="-1">Нажмите чтобы выбрать услугу</option>
-          <optgroup label="Лечение зубов">
             {displayServices}
-          </optgroup>
         </select>
-        {errors.service && <p className='text-red-500 text-sm font-bold'>⚠ Веберете услугу</p>}
+        {errors.service && <p className='text-red-500 text-sm font-bold'>⚠ Выберите услугу</p>}
       </div>
 
       <div>
@@ -53,7 +51,7 @@ export default function ServiceAndDoctor() {
           <option disabled value="-1">Нажмите чтобы выбрать врача</option>
             {displayDoctors}
         </select>
-        {errors.doctor && <p className='text-red-500 text-sm font-bold'>⚠ Веберете врача</p>}
+        {errors.doctor && <p className='text-red-500 text-sm font-bold'>⚠ Выберите врача</p>}
       </div>
       <div className='flex justify-around mt-10'>
         <input type="submit" value='Далее' className='bg-green-500 text-white uppercase py-2 px-8 rounded-xl font-semibold cursor-pointer hover:bg-green-600 active:bg-green-700 transition duration-200 ease-in-out'/>

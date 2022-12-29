@@ -22,13 +22,13 @@ export default function DateAndTime() {
   return (
     <form onSubmit={handleSubmit(data => handleChange(data, "next"))}>
       <h2 className='text-gray-900 font-thin text-2xl text-center uppercase mb-10'>
-        Выберете дату и время приема
+        Выберите дату и время приема
       </h2>
 
       <div className='flex flex-row justify-between flex-wrap md:flex-nowrap mb-10'>
         <div className="w-full mb-5 md:mr-5">
           <label htmlFor="date" className="block mb-2 text-xs font-bold text-gray-900 uppercase">
-              Выберете дату
+            Выберите дату
           </label>
           <input {...register("date", {
             required: true,
@@ -37,7 +37,7 @@ export default function DateAndTime() {
           
           {errors.date && 
           <p className='text-red-500 text-sm font-bold'>
-            ⚠ Неверно выбрана дата. Выберете от {getReadableDate(getNowDate())} до {getReadableDate(getNowDate(30))}
+            ⚠ Неверно выбрана дата. Выберите от {getReadableDate(getNowDate())} до {getReadableDate(getNowDate(30))}
           </p>}
         </div>
         <div className="w-full mb-5">
@@ -52,7 +52,7 @@ export default function DateAndTime() {
           
           {errors.time &&
           <p className='text-red-500 text-sm font-bold'>
-            ⚠ Неверно выбрано время. Выберете от 10:00 до 17:00
+            ⚠ Неверно выбрано время. Выберите от 10:00 до 17:00
           </p>}
         </div>
       </div>

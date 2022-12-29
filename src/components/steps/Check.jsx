@@ -1,9 +1,11 @@
 import React from 'react'
 import { StepperContext } from '../../contexts/StepperContext'
 import { doctors } from '../../data/doctors';
+import { services } from '../../data/services';
+
 
 export default function Check() {
-    const {userData, handleClick, services} = React.useContext(StepperContext);
+    const {userData, handleClick} = React.useContext(StepperContext);
     const getReadableDate = (date) => `${date.slice(8,10)}.${date.slice(5,7)}.${date.slice(0,4)}`;
 
     return (
@@ -23,12 +25,12 @@ export default function Check() {
                     <p>Телефон: {userData.phone}</p>
                     <p className={!userData.email ? 'hidden' : ''}>E-mail: {userData.email}</p>
                     <p>Домашний адрес: {userData.address}</p>
-                    <p>Дата рождения: {getReadableDate(userData.date)}</p>
+                    <p>Дата рождения: {getReadableDate(userData.dateOfBirth)}</p>
                 </div>
             </div>
             <div className='flex items-center mt-10'>
                 <input className='h-4 w-4 rounded text-green-300 mr-2' id="privicy" type='checkbox'/>
-                <label for="privicy" className='text-gray-500 font-normal text-sm'>Вы согласны на обработку <span className='text-gray-900 underline'>своих персональных данных</span></label>
+                <label htmlFor="privicy" className='text-gray-500 font-normal text-sm'>Даю согласие на обработку <span className='text-gray-900 underline'>своих персональных данных</span></label>
             </div>
             <div className='flex justify-between sm:justify-around mt-10'>
                 <input onClick={() => handleClick("back")} type="button" value='Назад'
