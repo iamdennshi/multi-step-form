@@ -16,6 +16,14 @@
   </p>
 </div>
 
+## 💡 Features
+- make an appointment with a doctor through a form with the following steps:
+  - a doctor and a service selection
+  - date and time selection
+  - personal data of the user
+  - summary based on user input
+- all fields are validated with **React Hook Form**
+- custom progress bar showing the level of completion of the form
 
 ## ⚙️ Getting Started
 The project uses [node](https://nodejs.org/en/), [npm](https://www.npmjs.com/). Follow the steps below to run it locally. 
@@ -25,12 +33,15 @@ The project uses [node](https://nodejs.org/en/), [npm](https://www.npmjs.com/). 
 ```
 - Go to the project directory and install all dependencies:
 ```bash
-  npm i
+  npm install
 ```
 - To run webpack and create a localhost in developer mode type:
 ```bash
   npm start
 ```
+## 🔗 Useful Resources
+- [Multi Step Form](https://www.youtube.com/watch?v=YFHuaOl7frk)
+- [React Hook Form](https://react-hook-form.com/)
 
 ## 🛠 Technologies
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
