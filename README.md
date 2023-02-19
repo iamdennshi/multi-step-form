@@ -5,7 +5,7 @@
   <h1 align="center"><a href="https://iamdennshi.github.io/multi-step-form/">Multi Step Form</a></h1>
   <img width="600px" src="https://user-images.githubusercontent.com/89966869/219118347-36df10e8-53bc-4c6a-8f85-6858e99d9bfd.gif">
   <p align="center">
-    This <strong>multi step form</strong> allows user to <strong>make an appointment with a doctor
+    This <strong>multi step form</strong> allows users to <strong>make an appointment with a doctor
     <br />
     <br />
     <a href="https://iamdennshi.github.io/multi-step-form/">View Demo</a>
@@ -22,14 +22,14 @@
   - date and time selection
   - personal data of the user
   - summary based on user input
-- all fields are validated with **React Hook Form**
+- all fields are validated with [React Hook Form](https://react-hook-form.com/)
 - custom progress bar showing the level of completion of the form
 
 ## ⚙️ Getting Started
 The project uses [node](https://nodejs.org/en/), [npm](https://www.npmjs.com/). Follow the steps below to run it locally. 
 - Clone the project using:
 ```bash
-  git clone
+  git clone https://github.com/iamdennshi/multi-step-form.git
 ```
 - Go to the project directory and install all dependencies:
 ```bash
@@ -39,9 +39,6 @@ The project uses [node](https://nodejs.org/en/), [npm](https://www.npmjs.com/). 
 ```bash
   npm start
 ```
-## 🔗 Useful Resources
-- [Multi Step Form](https://www.youtube.com/watch?v=YFHuaOl7frk)
-- [React Hook Form](https://react-hook-form.com/)
 
 ## 🛠 Technologies
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
