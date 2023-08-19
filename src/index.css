@@ -3,14 +3,34 @@
 @tailwind utilities;
 
 body {
-    background: #f1f5f9;
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
 }
 
 * {
   padding: 0;
   margin: 0;
 }
+
+@layer components {
+  .title {
+    @apply text-gray-900 dark:text-white font-thin text-2xl text-center uppercase mb-10;
+  }
+  
+  .label {
+    @apply block mb-2 text-xs font-bold text-gray-900 dark:text-white uppercase;
+  }
+  
+  .input {
+    @apply text-gray-900 dark:text-white bg-white dark:border-slate-400 dark:bg-slate-800 border-2 text-xs rounded-lg outline-none block w-full p-2.5
+  }
+
+}
+
+
+p {
+  color: inherit;
+}
+
 
 .wrapper {
   display: flex;
